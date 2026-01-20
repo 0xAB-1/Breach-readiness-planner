@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breach Readiness Plan</title>
+</head>
+<body>
+    <h1>Customized Breach Readiness Plan</h1>
+
+    <p><strong>Generated at:</strong> {{ plan.generated_at }}</p>
+
+    <h2>Business Information</h2>
+    <ul>
+        <li><strong>Name:</strong> {{ plan.business.business_name }}</li>
+        <li><strong>Type:</strong> {{ plan.business.business_type }}</li>
+        <li><strong>Employees:</strong> {{ plan.business.employee_count }}</li>
+        <li><strong>City:</strong> {{ plan.business.city }}</li>
+    </ul>
+
+    <h2>Incident Scenario</h2>
+    <p>{{ plan.scenario }}</p>
+
+    <h2>Risk Summary</h2>
+    <p>
+        <strong>Risk Level:</strong> {{ plan.risk.level }} <br>
+        <strong>Risk Score:</strong> {{ plan.risk.score }}
+    </p>
+
+    <ul>
+        {% for reason in plan.risk.reasons %}
+            <li>{{ reason }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>First 24 Hours Checklist</h2>
+    <ol>
+        {% for step in plan.first_24_hours %}
+            <li>{{ step }}</li>
+        {% endfor %}
+    </ol>
+
+    <hr>
+    <p><em>{{ plan.disclaimer }}</em></p>
+
+    <br>
+    <button onclick="window.print()">Print / Save as PDF</button>
+</body>
+</html>
